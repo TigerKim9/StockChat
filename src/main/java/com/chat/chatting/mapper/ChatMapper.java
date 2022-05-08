@@ -6,8 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.chat.chatting.entity.Chat;
-import com.chat.chatting.entity.ChatDTO;
 import com.chat.chatting.entity.ChatRoom;
+import com.chat.chatting.entity.DTO.ChatDTO;
+import com.chat.chatting.entity.DTO.ChatRoomDTO;
 
 @Mapper
 @Repository
@@ -23,5 +24,7 @@ public interface ChatMapper {
 	int createChatRoom(ChatRoom chatRoom);
 	
 	//채팅방 불러오기
-	List<ChatRoom> chatRoomView(long chatRoomId);
+	ChatRoomDTO chatRoomView(long chatRoomId);
+
+	List<ChatRoomDTO> chatRoomView(String keyword);
 }

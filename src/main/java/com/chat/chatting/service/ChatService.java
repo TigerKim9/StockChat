@@ -7,8 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.chat.chatting.entity.Chat;
-import com.chat.chatting.entity.ChatDTO;
 import com.chat.chatting.entity.ChatRoom;
+import com.chat.chatting.entity.DTO.ChatDTO;
+import com.chat.chatting.entity.DTO.ChatRoomDTO;
 import com.chat.chatting.mapper.ChatMapper;
 
 @Service
@@ -22,29 +23,25 @@ public class ChatService {
 	}
 	
 	public int saveChat(Chat chat) {
-		int result = 0;
-		List<ChatRoom> chatRoom = chatRoomView(chat.getChatRoomId());
-		List<ChatDTO> chatlists = crv.getChatRoomsChats();
-		for(ChatDTO chatlist : chatlists) {
-			crv.setChatRoomsChats(chatlists);
-		}
-		return result;
+		return chatMapper.saveChat(chat);
 	}
 	
 	public List<ChatDTO> chatView(long chatRoomId) {
-		List<ChatRoom> chatRoom = chatRoomView(chatRoomId);
+		ChatRoomDTO chatRoom = chatRoomView(chatRoomId);
 		logger.info("chatRoom : {}",chatRoom);
 		logger.debug("chatRoom : {}",chatRoom);
 		List<ChatDTO> chatLists = chatRoom.getChatRoomsChats();
+		chatLists = chatMapper.chatView(chatRoomId);
 		
-		for(ChatDTO chatList : chatLists) {
-			
-		}
-		return chatMapper.chatView(chatRoomId);
+		return chatLists;
 	}
 
-	public List<ChatRoom> chatRoomView(long chatRoomId) {
+	public ChatRoomDTO chatRoomView(long chatRoomId) {
 		
 		return chatMapper.chatRoomView(chatRoomId);
+	}
+	
+	public List<ChatRoomDTO> chatRoomView(String keyword){
+		return chatMapper.chatRoomView(keyword);
 	}
 }

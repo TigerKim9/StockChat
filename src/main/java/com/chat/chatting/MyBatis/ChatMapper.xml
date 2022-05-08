@@ -2,17 +2,40 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-  	<insert id="saveChat" parameterType="Chat">
+<mapper namespace="com.chat.chatting.mapper.ChatMapper">	
+  	<insert id="saveChat" parameterType="com.chat.chatting.entity.Chat">
   		INSERT INTO chat(
   			user_name,
   			chat_contents,
   			chat_datetime,
   			sended)
   		VALUES(
-  		#{userName),
+  		#{userName},
   		#{chatContents},
-  		#{chatDateTime},
+  		now(),
   		#{sended})
   		
   	</insert>
+  	  	<insert id="createChatRoom" parameterType="com.chat.chatting.entity.ChatRoom">
+  		INSERT INTO chatroom(
+  			chatrooms_name,
+  			made_roomchat_day)
+  		VALUES(
+  		#{chatRoomsName},
+  		now()
+  		)
+  	</insert>
+  	
+  	<select id="chatView" parameterType="long" resultType="com.chat.chatting.entity.DTO.ChatDTO">
+  		SELECT
+  		chat_id,
+  		chatroom_id,
+  		user_name,
+  		chat_contents,
+  		chat_date_time,
+  		sended
+  		FROM
+  		chat
+  		
+  	</select>
+</mapper>
