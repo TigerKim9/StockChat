@@ -28,4 +28,13 @@ public interface ChatMapper {
 
 	//채팅방 검색하기
 	List<ChatRoomDTO> chatRoomView(String keyword);
+	
+	//채팅방 숨기기,보이기
+	int hideChatRoom(long chatRoomId);
+	
+	//채팅방 상단 고정 활성/비활성
+	int topChatRoom(long chatRoomId);
+	
+	//채팅방 알람 활성/비활성
+	int alertChatRoom(long chatRoomId);
 }
