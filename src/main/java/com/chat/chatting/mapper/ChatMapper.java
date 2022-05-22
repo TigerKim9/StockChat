@@ -26,5 +26,6 @@ public interface ChatMapper {
 	//채팅방 불러오기
 	ChatRoomDTO chatRoomView(long chatRoomId);
 
+	//채팅방 검색하기
 	List<ChatRoomDTO> chatRoomView(String keyword);
 }
