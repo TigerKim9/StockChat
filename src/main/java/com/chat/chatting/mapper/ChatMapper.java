@@ -17,11 +17,11 @@ public interface ChatMapper {
 	//chat 저장
 	int saveChat(Chat chat);
 
-	//chat 보이기
-	List<ChatDTO> chatView(long chatRoomId);
-	
 	//채팅방 만들기
 	int createChatRoom(ChatRoom chatRoom);
+
+	//chat 보이기
+	List<ChatDTO> chatView(long chatRoomId);
 	
 	//채팅방 불러오기
 	ChatRoomDTO chatRoomView(long chatRoomId);

@@ -36,6 +36,22 @@
   		sended
   		FROM
   		chat
+  		WHERE
+  		chatroom_id = #{chatRoomId}
+  		
+  	</select>
+
+  	 <select id="chatRoomView" parameterType="long" resultType="com.chat.chatting.entity.DTO.ChatRoomDTO">
+  		SELECT
+  		chatrooms_Name,
+  		user_name,
+  		chat_contents,
+  		chat_date_time,
+  		sended
+  		FROM
+  		chat
+  	 	WHERE
+  	 	chatroom_id = #{chatRoomId}
   		
   	</select>
 </mapper>
