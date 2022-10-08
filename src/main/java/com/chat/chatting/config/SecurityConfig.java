@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @RequiredArgsConstructor
 @EnableWebSocket
-public class SecurityConfig implements Security{
+public class SecurityConfig implements Spring{
 
     /**
 	 * 
